@@ -1,5 +1,5 @@
 var allProducts = [];
-var productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
+var productNames = ['bag'+ img/bag.jpg, 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'sweepers', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 function Product(name, path) {
   // TODO: Build your constructor and necessary properties.
 }
@@ -12,6 +12,7 @@ var productRank = {
 
   getRandomIndex: function() {
     var randomAnswer = productNames[Math.floor(Math.random() * productNames.length)];
+    return getRandomIndex();
   },
 
   displayImages: function() {
@@ -44,6 +45,5 @@ var productRank = {
     // TODO: Hmm... what's going to happen here?
 }
 
-productRank.imageEls.addEventListener('click', productRank.onClick);
-productRank.displayImages();
-Add Comment
+// productRank.imageEls.addEventListener('click', productRank.onClick);
+// productRank.displayImages();
