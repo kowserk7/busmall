@@ -1,7 +1,6 @@
 'use strict';
 
 var allProducts = [];
-// var totalClicks = 0;
 var productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'sweepers', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
 function Product(name) {
@@ -23,7 +22,7 @@ var tracker =
 {
   imagesEl: document.getElementById('images'),
   resultsEL: document.getElementById('results'),
-  clickCount : 0,
+  clickCount: 0,
 
   imageOne: document.createElement('img'),
   imageTwo: document.createElement('img'),
@@ -58,13 +57,17 @@ var tracker =
   },
 
   onClick: function (event) {
-    console.log(event.target.src);
+    console.log(event.target.id);
     if (event.target.id === 'images'){
       console.log('didnt click an image');
       return;
     } else {
-      tracker.clickCount++;
-
+      clickCount ++;
+      if (clickCount === 25) {
+        document.getElementById('results').style.visibility = 'visible';
+      } else {
+        document.getElementById('results').style.visibility = 'hidden';
+      }
       for (var i in allProducts) {
         if (event.target.id === allProducts[i].name) {
           allProducts[i].votes++;
@@ -74,6 +77,31 @@ var tracker =
     }
   }
 };
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var options = {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [this.votes],
+      borderWidth: 1
+    },
+    ]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+};
+
+var myChart = new Chart(ctx, options);
 
 tracker.imagesEl.addEventListener('click', tracker.onClick);
 console.log(tracker);
