@@ -13,6 +13,9 @@ for(var i = 0; i < 21; i++){
   img[i] = new Image ();
   img[i].src = 'img/' + imageName[i] + '.jpg'; }
 
+  var myImage = new Image(100, 200);
+  myImage.src = 'picture.jpg';
+  document.body.appendChild(myImage);
 // TODO: Don't forget to build your objects. How can you do this withough having to write 14 lines of `new Product(., ., .)`?
 
 var productRank = {
@@ -20,23 +23,18 @@ var productRank = {
   // NOTE: A-C-P reminder... Make very intentional and iterative changes to your code, and then A-C-P.
 
   getRandomIndex: function() {
-    var randomImages = [];
-    var temp = arr.slice();
-    for (var i = 0; i<count; i++){
-      var index = Math.ceil(Math.random() * 10) % _tmp.length;
-      result.push(_tmp.splice(index, 1)[0]);
-    }
-    return result;
+    var productNames = Math.floor(Math.random()*productNames.length);
   },
 
 
   displayImages: function() {
+
     // TODO: Hmm... what's going to happen here?
   },
 
   tallyClicks: function(elementId) {
     totalClicks++;
-        window.document.ButtonForm.myButton.value= 'Clicked ' + totalClicks + ' times';
+        window.document.ButtonForm.myButton.value= 'Clicked ' + totalClicks + " times";
   },
 
   displayResults: function() {
