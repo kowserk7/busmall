@@ -62,11 +62,11 @@ var tracker =
       console.log('didnt click an image');
       return;
     } else {
-      clickCount ++;
-      if (clickCount === 25) {
-        document.getElementById('results').style.visibility = 'visible';
+      tracker.clickCount++;
+      if (tracker.clickCount === 3) {
+        document.getElementsByName('results').style.visibility = 'visible';
       } else {
-        document.getElementById('results').style.visibility = 'hidden';
+        document.getElementsByName('results').style.visibility = 'hidden';
       }
       for (var i in allProducts) {
         if (event.target.id === allProducts[i].name) {
@@ -78,30 +78,30 @@ var tracker =
   }
 };
 
-var ctx = document.getElementById('myChart').getContext('2d');
-var options = {
-  type: 'bar',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [this.votes],
-      borderWidth: 1
-    },
-    ]
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
-    }
-  }
-};
-
-var myChart = new Chart(ctx, options);
+// var ctx = document.getElementById('myChart').getContext('2d');
+// var options = {
+//   type: 'bar',
+//   data: {
+//     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+//     datasets: [{
+//       label: '# of Votes',
+//       data: [this.votes],
+//       borderWidth: 1
+//     },
+//     ]
+//   },
+//   options: {
+//     scales: {
+//       yAxes: [{
+//         ticks: {
+//           beginAtZero: true
+//         }
+//       }]
+//     }
+//   }
+// };
+//
+// var myChart = new Chart(ctx, options);
 
 tracker.imagesEl.addEventListener('click', tracker.onClick);
 console.log(tracker);
