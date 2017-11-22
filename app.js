@@ -59,9 +59,44 @@ var tracker =
   onClick: function (event) {
     console.log(event.target.id);
     if (tracker.clickCount === 24) {
-      var resultButton = document.createElement('button');
-      tracker.imagesEl.appendChild(resultButton);
-      tracker.imagesEl.removeEventListener('click', tracker.onClick);
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var options = {
+        type: 'bar',
+        data: {
+          labels:  allProducts.map(function(x) {return x.name;}),
+          datasets: [{
+            label: '# of Votes',
+            data: allProducts.map(function(x) {return x.votes;}),
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero:true
+              }
+            }]
+          }
+        }
+      };
+      var myChart = new Chart(ctx, options);
 
     }
     else if (event.target.id === 'images'){
@@ -80,30 +115,7 @@ var tracker =
   }
 };
 
-// var ctx = document.getElementById('myChart').getContext('2d');
-// var options = {
-//   type: 'bar',
-//   data: {
-//     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-//     datasets: [{
-//       label: '# of Votes',
-//       data: [this.votes],
-//       borderWidth: 1
-//     },
-//     ]
-//   },
-//   options: {
-//     scales: {
-//       yAxes: [{
-//         ticks: {
-//           beginAtZero: true
-//         }
-//       }]
-//     }
-//   }
-// };
-//
-// var myChart = new Chart(ctx, options);
+
 
 tracker.imagesEl.addEventListener('click', tracker.onClick);
 console.log(tracker);
