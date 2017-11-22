@@ -58,23 +58,25 @@ var tracker =
 
   onClick: function (event) {
     console.log(event.target.id);
-    if (event.target.id === 'images'){
+    if (tracker.clickCount === 24) {
+      var resultButton = document.createElement('button');
+      tracker.imagesEl.appendChild(resultButton);
+      tracker.imagesEl.removeEventListener('click', tracker.onClick);
+
+    }
+    else if (event.target.id === 'images'){
       console.log('didnt click an image');
       return;
     } else {
       tracker.clickCount++;
-      if (tracker.clickCount === 3) {
-        document.getElementsByName('results').style.visibility = 'visible';
-      } else {
-        document.getElementsByName('results').style.visibility = 'hidden';
-      }
-      for (var i in allProducts) {
-        if (event.target.id === allProducts[i].name) {
-          allProducts[i].votes++;
-        }
-      }
-      tracker.displayImages();
     }
+
+    for (var i in allProducts) {
+      if (event.target.id === allProducts[i].name) {
+        allProducts[i].votes++;
+      }
+    }
+    tracker.displayImages();
   }
 };
 
