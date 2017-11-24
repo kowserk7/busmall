@@ -59,6 +59,8 @@ var tracker =
     console.log(event.target.id);
     if (tracker.clickCount === 24) {
       tracker.imagesEl.removeEventListener('click', tracker.onClick);
+      allProducts.push(JSON.parse(localStorage.getItem('allProducts')));
+      localStorage.setItem('allProducts', JSON.stringify(allProducts));
       var ctx = document.getElementById('myChart').getContext('2d');
       var options = {
         type: 'bar',
