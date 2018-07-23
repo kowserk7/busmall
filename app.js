@@ -129,11 +129,11 @@ var tracker =
           }
         }
       };
-      var myChart = new Chart(ctx, options);
+      new Chart(ctx, options);
 
     }
     else if (event.target.id === 'images'){
-      console.log('didnt click an image');
+      console.log('didn\'t click an image');
       return;
     } else {
       tracker.clickCount++;
