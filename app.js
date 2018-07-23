@@ -3,12 +3,14 @@
 var allProducts = [];
 var productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'sweepers', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
-function Product(name) {
-  this.name = name;
-  this.path = 'img/' + this.name + '.jpg';
-  this.votes = 0;
-  this.timeShown = 0;
-  allProducts.push(this);
+class Product {
+  constructor(name) {
+    this.name = name;
+    this.path = 'img/' + this.name + '.jpg';
+    this.votes = 0;
+    this.timeShown = 0;
+    allProducts.push(this);
+  }
 }
 
 (function() {
@@ -127,11 +129,11 @@ var tracker =
           }
         }
       };
-      var myChart = new Chart(ctx, options);
+      new Chart(ctx, options);
 
     }
     else if (event.target.id === 'images'){
-      console.log('didnt click an image');
+      console.log('didn\'t click an image');
       return;
     } else {
       tracker.clickCount++;
@@ -150,4 +152,5 @@ var tracker =
 
 tracker.imagesEl.addEventListener('click', tracker.onClick);
 console.log(tracker);
+console.log(allProducts);
 tracker.displayImages();
