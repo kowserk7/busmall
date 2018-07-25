@@ -120,13 +120,20 @@ var tracker =
           }]
         },
         options: {
+          // responsive: false,
           scales: {
             yAxes: [{
               ticks: {
-                beginAtZero:true
+                beginAtZero: true
+              }
+            }],
+            xAxes: [{
+              ticks: {
+                autoSkip: false
               }
             }]
           }
+
         }
       };
       new Chart(ctx, options);
